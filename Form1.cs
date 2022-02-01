@@ -31,5 +31,20 @@ namespace InClassCalcTurner
         {
             txtInputOutput.Text = "Noah Turner";
         }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
