@@ -16,7 +16,7 @@ namespace InClassCalcTurner
     {
 
         String input = String.Empty;
-        double num1 = 0;
+        double result = 0;
         double num2 = 0;
 
         public Form1()
@@ -37,9 +37,9 @@ namespace InClassCalcTurner
         private void Sqrt_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            num1 = double.Parse(input);
-            num1 = Math.Sqrt(num1);
-            input = num1.ToString();
+            result = double.Parse(input);
+            result = Math.Sqrt(num1);
+            input = result.ToString();
             txtInputOutput.Text = input;
         }
 
@@ -53,7 +53,9 @@ namespace InClassCalcTurner
         private void SquareButton_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input = Math.Pow(Int32.Parse(input), 2).ToString();
+            result = double.Parse(input);
+            result = Math.Pow(num1, 2);
+            input = result.ToString();
             txtInputOutput.Text = input;
         }
 
