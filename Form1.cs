@@ -15,9 +15,11 @@ namespace InClassCalcTurner
     public partial class Form1 : Form
     {
 
-        String input = String.Empty;
+        String input1 = String.Empty;
+        String input2 = String.Empty;
         String operator1 = String.Empty;
         String operator2 = String.Empty;
+        bool usingInput2 = false;
         double result = 0;
         
 
@@ -40,12 +42,12 @@ namespace InClassCalcTurner
         {
             double parseResult = 0;
             
-            if (double.TryParse(input, out parseResult)){
+            if (double.TryParse(input1, out parseResult)){
                 txtInputOutput.Text = "";
                 result = parseResult;
                 result = Math.Sqrt(result);
-                input = result.ToString();
-                txtInputOutput.Text = input;
+                input1 = result.ToString();
+                txtInputOutput.Text = input1;
             }
             else
             {
@@ -57,22 +59,31 @@ namespace InClassCalcTurner
 
         private void button9_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input += "9";
-            txtInputOutput.Text = input;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "9";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "9";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void SquareButton_Click(object sender, EventArgs e)
         {
             double parseResult = 0;
             
-            if (double.TryParse(input, out parseResult))
+            if (double.TryParse(input1, out parseResult))
             {
                 txtInputOutput.Text = "";
                 result = parseResult;
                 result = Math.Pow(result, 2);
-                input = result.ToString();
-                txtInputOutput.Text = input;
+                input1 = result.ToString();
+                txtInputOutput.Text = input1;
             }
             else
             {
@@ -90,13 +101,13 @@ namespace InClassCalcTurner
         {
             double parseResult = 0;
 
-            if (double.TryParse(input, out parseResult))
+            if (double.TryParse(input1, out parseResult))
             {
                 txtInputOutput.Text = "";
                 result = parseResult;
                 result = 1 / result;
-                input = result.ToString();
-                txtInputOutput.Text = input;
+                input1 = result.ToString();
+                txtInputOutput.Text = input1;
             }
             else
             {
@@ -112,12 +123,12 @@ namespace InClassCalcTurner
 
         private void Del_Click(object sender, EventArgs e)
         {
-            if (input.Any())
+            if (input1.Any())
             {
-                input = input.Remove(input.Length - 1);
-                txtInputOutput.Text = input;
+                input1 = input1.Remove(input1.Length - 1);
+                txtInputOutput.Text = input1;
             }
-            if (!input.Any())
+            if (!input1.Any())
             {
 
                 txtInputOutput.Text = "0";
@@ -129,7 +140,91 @@ namespace InClassCalcTurner
 
         private void Equals_Click(object sender, EventArgs e)
         {
+            double parseResult1 = 0;
+            double parseResult2 = 0;
 
+            switch (operator1)
+            {
+
+                case ("*"):
+                    
+
+                    if (double.TryParse(input1, out parseResult1) && double.TryParse(input2, out parseResult2))
+                    {
+                        txtInputOutput.Text = "";
+                        result = parseResult1 * parseResult2;
+                        input1 = result.ToString();
+                        txtInputOutput.Text = input1;
+                    }
+                    else
+                    {
+                        txtInputOutput.Text = "0";
+                        Console.WriteLine("Cannot do operation");
+                    }
+
+                    break;
+
+                case ("/"):
+                    
+
+                    if (double.TryParse(input1, out parseResult1) && double.TryParse(input2, out parseResult2))
+                    {
+                        txtInputOutput.Text = "";
+                        result = parseResult1 / parseResult2;
+                        input1 = result.ToString();
+                        txtInputOutput.Text = input1;
+                    }
+                    else
+                    {
+                        txtInputOutput.Text = "0";
+                        Console.WriteLine("Cannot do operation");
+                    }
+
+                    break;
+
+                case ("-"):
+                 
+
+                    if (double.TryParse(input1, out parseResult1) && double.TryParse(input2, out parseResult2))
+                    {
+                        txtInputOutput.Text = "";
+                        result = parseResult1 - parseResult2;
+                        input1 = result.ToString();
+                        txtInputOutput.Text = input1;
+                    }
+                    else
+                    {
+                        txtInputOutput.Text = "0";
+                        Console.WriteLine("Cannot do operation");
+                    }
+
+                    break;
+
+                case ("+"):
+                  
+
+                    if (double.TryParse(input1, out parseResult1) && double.TryParse(input2, out parseResult2))
+                    {
+                        txtInputOutput.Text = "";
+                        result = parseResult1 + parseResult2;
+                        input1 = result.ToString();
+                        txtInputOutput.Text = input1;
+                    }
+                    else
+                    {
+                        txtInputOutput.Text = "0";
+                        Console.WriteLine("Cannot do operation");
+                    }
+
+                    break;
+
+
+                   
+
+            }
+
+            usingInput2 = false;
+            
         }
 
         private void C_Click(object sender, EventArgs e)
@@ -137,62 +232,64 @@ namespace InClassCalcTurner
             txtInputOutput.Text = "0";
             operator1 = "";
             operator2 = "";
-            input = "";
+            input1 = "";
+            input2 = "";
+            usingInput2 = false;
         }
 
         private void Eight_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "8";
-            txtInputOutput.Text = input;
+            input1 += "8";
+            txtInputOutput.Text = input1;
         }
 
         private void Seven_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "7";
-            txtInputOutput.Text = input;
+            input1 += "7";
+            txtInputOutput.Text = input1;
         }
 
         private void Four_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "4";
-            txtInputOutput.Text = input;
+            input1 += "4";
+            txtInputOutput.Text = input1;
         }
 
         private void Five_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "5";
-            txtInputOutput.Text = input;
+            input1 += "5";
+            txtInputOutput.Text = input1;
         }
 
         private void One_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "1";
-            txtInputOutput.Text = input;
+            input1 += "1";
+            txtInputOutput.Text = input1;
         }
 
         private void Two_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "2";
-            txtInputOutput.Text = input;
+            input1 += "2";
+            txtInputOutput.Text = input1;
         }
 
         private void ChangeSign_Click(object sender, EventArgs e)
         {
             double parseResult = 0;
 
-            if (double.TryParse(input, out parseResult))
+            if (double.TryParse(input1, out parseResult))
             {
                 txtInputOutput.Text = "";
                 result = parseResult;
                 result *= -1;
-                input = result.ToString();
-                txtInputOutput.Text = input;
+                input1 = result.ToString();
+                txtInputOutput.Text = input1;
             }
             else
             {
@@ -204,25 +301,25 @@ namespace InClassCalcTurner
         private void Zero_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "0";
-            txtInputOutput.Text = input;
+            input1 += "0";
+            txtInputOutput.Text = input1;
         }
 
         private void Decimal_Click(object sender, EventArgs e)
         {
-            if (!input.Contains("."))
+            if (!input1.Contains("."))
             {
                 txtInputOutput.Text = "";
-                input += ".";
-                txtInputOutput.Text = input;
+                input1 += ".";
+                txtInputOutput.Text = input1;
             }
         }
 
         private void Three_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "3";
-            txtInputOutput.Text = input;
+            input1 += "3";
+            txtInputOutput.Text = input1;
         }
 
         private void Plus_Click(object sender, EventArgs e)
@@ -238,13 +335,24 @@ namespace InClassCalcTurner
         private void Six_Click(object sender, EventArgs e)
         {
             txtInputOutput.Text = "";
-            input += "6";
-            txtInputOutput.Text = input;
+            input1 += "6";
+            txtInputOutput.Text = input1;
         }
 
         private void Multiply_Click(object sender, EventArgs e)
         {
+            usingInput2 = true;
 
+            if (!operator1.Any())
+            {
+                operator1 += "*";
+
+            }
+            else
+            {
+
+                Equals_Click(sender, e);
+            }
         }
 
         private void Divide_Click(object sender, EventArgs e)
