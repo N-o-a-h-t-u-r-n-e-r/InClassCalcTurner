@@ -71,10 +71,11 @@
             // 
             this.txtInputOutput.Location = new System.Drawing.Point(12, 22);
             this.txtInputOutput.Name = "txtInputOutput";
-            this.txtInputOutput.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtInputOutput.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtInputOutput.Size = new System.Drawing.Size(258, 20);
             this.txtInputOutput.TabIndex = 0;
             this.txtInputOutput.Text = "0";
+            this.txtInputOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtInputOutput.TextChanged += new System.EventHandler(this.txtInputOutput_TextChanged);
             // 
             // Fraction
