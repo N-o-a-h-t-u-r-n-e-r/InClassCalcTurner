@@ -1,6 +1,6 @@
 ﻿namespace InClassCalcTurner
 {
-    partial class Form1
+    partial class Calc
     {
         /// <summary>
         /// Required designer variable.
@@ -333,7 +333,7 @@
             this.ChangeSign.UseVisualStyleBackColor = true;
             this.ChangeSign.Click += new System.EventHandler(this.ChangeSign_Click);
             // 
-            // Form1
+            // Calc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -364,8 +364,8 @@
             this.Controls.Add(Sqrt);
             this.Controls.Add(this.txtInputOutput);
             this.KeyPreview = true;
-            this.Name = "Form1";
-            this.Text = "Very Basic Windows Form";
+            this.Name = "Calc";
+            this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

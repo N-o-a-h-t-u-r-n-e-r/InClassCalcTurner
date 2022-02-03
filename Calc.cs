@@ -12,18 +12,17 @@ namespace InClassCalcTurner
 {
   
 
-    public partial class Form1 : Form
+    public partial class Calc : Form
     {
 
         String input1 = String.Empty;
         String input2 = String.Empty;
         String operator1 = String.Empty;
-        String operator2 = String.Empty;
         bool usingInput2 = false;
         double result = 0;
         
 
-        public Form1()
+        public Calc()
         {
             InitializeComponent();
         }
@@ -92,10 +91,6 @@ namespace InClassCalcTurner
             }
         }
 
-        private void SquareYButton_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Fraction_Click(object sender, EventArgs e)
         {
@@ -118,6 +113,8 @@ namespace InClassCalcTurner
 
         private void CE_Click(object sender, EventArgs e)
         {
+            txtInputOutput.Text = "0";
+            input2 = "";
 
         }
 
@@ -219,11 +216,27 @@ namespace InClassCalcTurner
                     break;
 
 
-                   
+                case ("^"):
+
+
+                    if (double.TryParse(input1, out parseResult1) && double.TryParse(input2, out parseResult2))
+                    {
+                        txtInputOutput.Text = "";
+                        result = Math.Pow(parseResult1,parseResult2);
+                        input1 = result.ToString();
+                        txtInputOutput.Text = input1;
+                    }
+                    else
+                    {
+                        txtInputOutput.Text = "0";
+                        Console.WriteLine("Cannot do operation");
+                    }
+
+                    break;
 
             }
 
-            usingInput2 = false;
+            
             
         }
 
@@ -231,7 +244,6 @@ namespace InClassCalcTurner
         {
             txtInputOutput.Text = "0";
             operator1 = "";
-            operator2 = "";
             input1 = "";
             input2 = "";
             usingInput2 = false;
@@ -239,44 +251,98 @@ namespace InClassCalcTurner
 
         private void Eight_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "8";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "8";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "8";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Seven_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "7";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "7";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "7";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Four_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "4";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "4";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "4";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Five_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "5";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "5";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "5";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void One_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "1";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "1";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "1";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Two_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "2";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "2";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "2";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void ChangeSign_Click(object sender, EventArgs e)
@@ -300,9 +366,18 @@ namespace InClassCalcTurner
 
         private void Zero_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "0";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "0";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "0";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Decimal_Click(object sender, EventArgs e)
@@ -317,26 +392,72 @@ namespace InClassCalcTurner
 
         private void Three_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "3";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "3";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "3";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Plus_Click(object sender, EventArgs e)
         {
-            
+            usingInput2 = true;
+
+            if (!operator1.Any())
+            {
+
+                operator1 = "+";
+
+            }
+            else
+            {
+
+                Equals_Click(sender, e);
+                operator1 = "+";
+                input2 = "";
+            }
         }
 
         private void Subtract_Click(object sender, EventArgs e)
         {
+            usingInput2 = true;
 
+            if (!operator1.Any())
+            {
+
+                operator1 = "-";
+
+            }
+            else
+            {
+
+                Equals_Click(sender, e);
+                operator1 = "-";
+                input2 = "";
+            }
         }
 
         private void Six_Click(object sender, EventArgs e)
         {
-            txtInputOutput.Text = "";
-            input1 += "6";
-            txtInputOutput.Text = input1;
+            if (usingInput2 == false)
+            {
+                txtInputOutput.Text = "";
+                input1 += "6";
+                txtInputOutput.Text = input1;
+            }
+            else
+            {
+                txtInputOutput.Text = "";
+                input2 += "6";
+                txtInputOutput.Text = input2;
+            }
         }
 
         private void Multiply_Click(object sender, EventArgs e)
@@ -345,19 +466,55 @@ namespace InClassCalcTurner
 
             if (!operator1.Any())
             {
-                operator1 += "*";
+
+                operator1 = "*";
+
+            }
+            else
+            {
+                
+                Equals_Click(sender, e);
+                operator1 = "*";
+                input2 = "";
+            }
+        }
+
+        private void SquareYButton_Click(object sender, EventArgs e)
+        {
+            usingInput2 = true;
+
+            if (!operator1.Any())
+            {
+
+                operator1 = "^";
 
             }
             else
             {
 
                 Equals_Click(sender, e);
+                operator1 = "^";
+                input2 = "";
             }
         }
-
         private void Divide_Click(object sender, EventArgs e)
         {
+            usingInput2 = true;
+            
 
+            if (!operator1.Any())
+            {
+                
+                operator1 = "/";
+
+            }
+            else
+            {
+         
+                Equals_Click(sender, e);
+                operator1 = "/";
+                input2 = "";
+            }
         }
     }
 }
